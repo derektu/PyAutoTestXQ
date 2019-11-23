@@ -1,0 +1,61 @@
+{
+    "setting": {
+        "build": "XQ",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\SystemPage\\交易-${DATETIME}",
+        "waittime": 5
+    },
+
+    "items": [
+        {
+            "name": "證券下單頁",
+            "keys": "T,2D"
+        },
+        {
+            "name": "證券庫存下單",
+            "keys": "T,3D"
+        },
+        {
+            "name": "證券委託查詢",
+            "keys": "T,4D"
+        },
+        {
+            "name": "證券成交查詢",
+            "keys": "T,5D"
+        },
+        {
+            "name": "證券庫存",
+            "keys": "T,6D"
+        },
+        {
+            "name": "證券帳務",
+            "keys": "T,7D"
+        },
+        {
+            "name": "期貨下單",
+            "keys": "T,8D"
+        },
+        {
+            "name": "選擇權下單",
+            "keys": "T,9D"
+        },
+        {
+            "name": "選擇權策略下單",
+            "keys": "T,10D"
+        },
+        {
+            "name": "期權委託查詢",
+            "keys": "T,11D"
+        },
+        {
+            "name": "期權成交查詢",
+            "keys": "T,12D"
+        },
+        {
+            "name": "期權未平倉",
+            "keys": "T,13D"
+        }
+    ]
+
+
+
+}

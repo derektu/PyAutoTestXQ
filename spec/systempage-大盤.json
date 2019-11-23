@@ -1,0 +1,51 @@
+{
+    "setting.comments": [
+        "--定義系統頁面的測試參數--",
+        "請設定以下參數:",
+        "build: 定義要跑的XQ版本, can be XQ, XQLite, XQ7",
+        "outputfolder: 定義輸出檔案的位置, 可以使用${DATETIME}來標記當時時間 (換成YYYYMMDD-HHMMSS)",
+        "waittime: 開啟頁面後的預設等待時間(second)"
+    ],
+    "setting": {
+        "build": "XQ",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\SystemPage\\大盤-${DATETIME}",
+        "waittime": 5
+    },
+
+    "items.comment": [
+        "每個測試頁面是一個object, 包含name, keys, 以及waittime這幾個欄位",
+        "name是頁面名稱, 這個也是capture檔案的名稱",
+        "keys是按鍵的順序, 包含多個字元, comma-separated",
+        "第一個字元是top-level menu的輔助鍵, 例如Q for 報價",
+        "之後的字元可以是R(right), D(down), 或是2R(代表重複的次數)",
+        "完整範例: M,R,2D, 先按Alt+M, 接著按right, 接著按兩次down",
+        "waittime是optional, 如果定義的話會overwrite預設的timeout"
+    ],
+
+    "items": [
+        {
+            "name": "台股大盤分析_上市加權指數",
+            "keys": "M,R"
+        },
+        {
+            "name": "台股大盤分析_上櫃OTC指數",
+            "keys": "M,R,D"
+        },
+        {
+            "name": "台股大盤分析_類股指數",
+            "keys": "M,R,2D"
+        },
+        {
+            "name": "港股大盤分析_恆生指數",
+            "keys": "M,D,R",
+            "waittime": 8
+        },
+        {
+            "name": "港股大盤分析_中國企業指數",
+            "keys": "M,D,R,D"
+        }
+    ]
+
+
+
+}

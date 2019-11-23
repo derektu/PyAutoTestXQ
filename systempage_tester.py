@@ -1,12 +1,8 @@
-#!/usr/bin/env python3
-
-from pywinauto.application import Application
-import sys, getopt
-import os
-import time
-import datetime
-import re
+import sys, os, time, datetime, re, json
 import util
+from xqwindow import XQWindow
+from xqbuild import XQBuild
+from testsetting import TestSetting
 
 def convert_to_key_sequences(keysequence):
     """
@@ -37,57 +33,50 @@ def test_system_page(config_file, encoding = 'utf-8'):
     :param config_file: location of the test specification file
     :param encoding: encoding for the config file.
     """
-    SECTION_GENERAL = 'general'
-    SECTION_ITEMS = 'items'
-    KEY_BUILD = 'build'
-    KEY_OUTPUTFOLDER = 'outputfolder'
-    KEY_WAITTIME = 'waittime'
-    KEY_ITEM = 'item'
-
+    
     # load setting
-    dict = util.load_ini_file(config_file, encoding)
+    with open(config_file, encoding=encoding) as config_json_file:
+        config = json.load(config_json_file)
 
-    # determine XQ build
-    build = util.XQBuild.from_str(dict[SECTION_GENERAL].get(KEY_BUILD, 'xq'))
-    if not build:
-        raise Exception('Invalid build setting.')
-
-    output_folder = dict[SECTION_GENERAL].get(KEY_OUTPUTFOLDER, r'.\output\${DATETIME}')
-    output_folder = output_folder.replace('${DATETIME}', datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
-    os.makedirs(output_folder)
-
-    default_wait_time = int(dict[SECTION_GENERAL].get(KEY_WAITTIME, '5'))
+    # test setting 
+    setting = TestSetting(config)
+    setting.init()
 
     # TODO: 開始產生html檔案, 紀錄每個動作
 
     try:
         # locate XQ main window
-        mainwnd = util.find_xq_mainwnd(build)
-        for itemkey in dict[SECTION_ITEMS].keys():
-            if not itemkey.startswith('item'): continue
-            item = dict[SECTION_ITEMS][itemkey]
-            fields = item.split("|")
-            if len(fields) < 2 : continue
-            # fields[0] = name
-            # fields[1] = keycode combinations
+        xq = XQWindow(setting.build)
+        xq.connect()
+        for item in config["items"]:
+            keys = util.get_property(item, "keys", "")
+            if not keys: raise NameError("keys")
 
-            # TODO: 紀錄動作(目前時間, 準備測試 fields[0])
+            name = util.get_property(item, "name", "")
+            if not name: raise NameError("name")
 
-            keys = convert_to_key_sequences(fields[1])
+            # TODO: 紀錄動作(目前時間, 準備測試 name)
 
-            mainwnd.set_focus()
-            for key in keys:
+            keycodes = convert_to_key_sequences(keys)
+
+            xq.mainwnd.set_focus()
+            for keycode in keycodes:
                 time.sleep(1)
-                mainwnd.type_keys(key)
-            wait_time = int(fields[2]) if len(fields) >= 3 else default_wait_time
+                xq.mainwnd.type_keys(keycode)
+            
+            wait_time = util.get_int_property(item, "waittime", 0)
+            if wait_time <= 0: wait_time = setting.default_wait_time
+
             time.sleep(wait_time)
-            mainwnd.wait('ready')
+            xq.mainwnd.wait('ready')
 
             # TODO: 紀錄動作(目前時間, 產出img: capture_filename)
 
             # capture screen as image file
-            capture_filename = os.path.join(output_folder, fields[0] + ".png")
-            mainwnd.capture_as_image().save(capture_filename)
+            capture_filename = os.path.join(setting.output_folder, name + ".png")
+            xq.mainwnd.capture_as_image().save(capture_filename)
+            time.sleep(1)
+
     except Exception as e:
         print('Exception:' + str(e))    
         # TODO 產生錯誤紀錄

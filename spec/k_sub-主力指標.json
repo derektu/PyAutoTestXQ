@@ -1,0 +1,40 @@
+{
+    "setting": {
+        "build": "XQ",
+        "pagecode": "501",
+        "symbolcode": "2454.tw",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\K線\\主力指標\\2454-副圖-${DATETIME}",
+        "waittime": 8
+    },
+
+    "items": [
+        {
+            "name": "主力進出",
+            "indicator": "\\主力指標\\主力進出"
+        },
+        {
+            "name": "收集派發指標",
+            "indicator": "\\主力指標\\收集派發指標"
+        },
+        {
+            "name": "大戶持股",
+            "indicator": "\\主力指標\\大戶持股"
+        },
+        {
+            "name": "散戶持股",
+            "indicator": "\\主力指標\\散戶持股"
+        },
+        {
+            "name": "內部人持股",
+            "indicator": "\\主力指標\\內部人持股"
+        },
+        {
+            "name": "關鍵券商買賣超",
+            "indicator": "\\主力指標\\關鍵券商買賣超"
+        },
+        {
+            "name": "地緣券商買賣超",
+            "indicator": "\\主力指標\\地緣券商買賣超"
+        }
+    ]
+}

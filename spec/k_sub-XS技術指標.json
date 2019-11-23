@@ -1,0 +1,52 @@
+{
+    "setting.comments": [
+        "--定義K線副圖指標的測試參數--",
+        "請設定以下參數:",
+        "build: 定義要跑的XQ版本, can be XQ, XQLite, XQ7",
+        "pagecode: 定義要開啟的基本頁面template. 目前的做法是先設定一個K線頁面, 以及對應的快捷碼, 然後用快捷碼開啟這個頁面之後更換指標來測試",
+        "symbolcode: 定義要測試的商品代碼, 開啟頁面後會更換到這個商品, 才開始測試",
+        "outputfolder: 定義輸出檔案的位置, 可以使用${DATETIME}來標記當時時間 (換成YYYYMMDD-HHMMSS)",
+        "waittime: 更換指標後的預設等待時間(second)"
+    ],
+    "setting": {
+        "build": "XQ",
+        "pagecode": "501",
+        "symbolcode": "3008.tw",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\K線\\XS指標\\技術指標\\2454-副圖-${DATETIME}",
+        "waittime": 5
+    },
+
+    "items.comment": [
+        "每個測試是一個object, 包含name, indicator, 以及waittime這幾個欄位",
+        "indicator是指標的路徑, 例如 \\XS指標\\系統\\XQ技術指標\\RSI, 路徑不一定要完整, 可是要可以unique的被辨識",
+        "name是這個測試的名稱, 會變成是capture檔案的名稱",
+        "waittime是optional, 如果定義的話會overwrite預設的timeout"
+    ],
+
+    "items": [
+        {
+            "name": "3-6乖離率",
+            "indicator": "\\XS指標\\系統\\XQ技術指標\\3-6 乖離率"
+        },
+        {
+            "name": "3-6乖離率轉折點",
+            "indicator": "\\XS指標\\系統\\XQ技術指標\\3-6乖離率轉折點"
+        },
+        {
+            "name": "ACC",
+            "indicator": "\\XS指標\\系統\\XQ技術指標\\ACC (加速量指標)"
+        },
+        {
+            "name": "AD-Osc",
+            "indicator": "\\XS指標\\系統\\XQ技術指標\\AD-Osc(聚散擺盪指標)"
+        },
+        {
+            "name": "快速KD",
+            "indicator": "\\XS指標\\系統\\XQ技術指標\\快速KD 隨機指標"
+        },
+        {
+            "name": "威廉指標",
+            "indicator": "\\XS指標\\系統\\XQ技術指標\\威廉指標"
+        }
+    ]
+}
