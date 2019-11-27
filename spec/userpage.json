@@ -8,7 +8,7 @@
     ],
     "setting": {
         "build": "XQ",
-        "outputfolder" : "C:\\Temp\\PyTest\\output\\SystemPage\\大盤-${DATETIME}",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\UserPage\\${DATETIME}",
         "waittime": 5
     },
 
@@ -28,27 +28,24 @@
     "items": [
         {
             "name": "台股大盤分析_上市加權指數",
+            "type": "s",
             "keys": "M,R"
         },
         {
-            "name": "台股大盤分析_上櫃OTC指數",
-            "keys": "M,R,D"
+            "name": "Tick_K",
+            "type": "u",
+            "keys": "601",
+            "symbols": [
+                "TSE.TW",
+                "2454.TW",
+                "3008.TW"
+            ]
         },
         {
-            "name": "台股大盤分析_類股指數",
-            "keys": "M,R,2D"
-        },
-        {
-            "name": "港股大盤分析_恆生指數",
-            "keys": "M,D,R",
-            "waittime": 8
-        },
-        {
-            "name": "港股大盤分析_中國企業指數",
-            "keys": "M,D,R,D"
+            "name": "2K",
+            "type": "u",
+            "keys": "602"
         }
     ]
-
-
 
 }
