@@ -30,7 +30,8 @@ class XQWindow():
         :param mainwnd: XQ main window
         :param text: 要輸入的文字, 例如商品代碼, 或是頁碼
         """
-        toolbar = self.mainwnd.child_window(class_name='XTPToolBar', title=r"一般")
+        spec = self.build.spec()
+        toolbar = self.mainwnd.child_window(class_name='XTPToolBar', title=spec['maintoolbar'])
         omnibox = toolbar.child_window(class_name='RichEdit20A')
         omnibox.set_edit_text(text)
         omnibox.type_keys('{ENTER}')

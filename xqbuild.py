@@ -29,19 +29,22 @@ class XQBuild(Enum):
             return {
                 'class_name': 'DAQMainWnd',
                 'exe_path' : r'c:\SysJust\XQ2005\daq.exe',
-                'title' : 'XQ全球贏家'
+                'title' : 'XQ全球贏家',
+                'maintoolbar' : '一般'
             }
         elif self.name == 'XQLite':
             return {
-                'class_name': 'DAQXQLiteMainWnd',
+                'class_name': 'DAQXQLITEMainWnd',
                 'exe_path' : r'c:\SysJust\XQLite\daqxqlite.exe',
-                'title' : 'XQ操盤高手'
+                'title' : 'XQ操盤高手',
+                'maintoolbar' : '簡易選單'
             }
         elif self.name == 'XQ7':
             return {
                 'class_name': 'DAQMainWnd',
                 'exe_path' : r'c:\SysJust\XQ7\daq7.exe',
-                'title' : 'XQ全球贏家 Beta測試版'
+                'title' : 'XQ全球贏家 Beta測試版',
+                'maintoolbar' : '一般'
             }
         else:
             return None
