@@ -1,0 +1,16 @@
+{
+    "setting": {
+        "build": "XQ",
+        "pagecode": "501",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\K線\\技術指標\\${DATETIME}",        
+        "waittime": 8,
+        "symbols": [
+            "2454.tw"
+        ],    
+        "freqs" : [
+            "D",
+            "W"
+        ],
+        "rootpath": "技術指標"
+    }
+}

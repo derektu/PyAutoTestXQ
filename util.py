@@ -33,6 +33,26 @@ def get_int_property(obj, field, default_value):
     except:
         return default_value     
 
+def get_freq_name(freq):
+    """
+    回傳freq所對應的中文名稱(等於選單內的名稱)
+    :param freq=N (for分鐘頻率) or D / W / M / Q / H / Y / AD / AW / AM
+    """
+    freqmap = {
+        "D" : "日線圖",
+        "W" : "週線圖",
+        "M" : "月線圖",
+        "Q" : "季線圖",
+        "H" : "半年線圖",
+        "Y" : "年線圖",
+        "AD" : "還原日線圖",
+        "AW" : "還原週線圖",
+        "AM" : "還原月線圖"
+    }
+    return freqmap.get(freq) or f"{freq}分鐘"
+
+
+
 """
 # xtptoolbar = mainwnd[u'DAQ Menu']
 
