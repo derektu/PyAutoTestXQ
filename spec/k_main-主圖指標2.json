@@ -2,15 +2,15 @@
     "setting": {
         "build": "XQ",
         "pagecode": "501",
-        "outputfolder" : "C:\\Temp\\PyTest\\output\\K線\\技術指標\\${DATETIME}",        
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\K線\\主圖指標\\${DATETIME}",        
         "waittime": 8,
         "symbols": [
             "2454.tw"
         ],    
         "freqs" : [
-            "D",
-            "W"
+            "D"
         ],
-        "rootpath": "技術指標"
+        "type": "main",
+        "rootpath": "系統\\主圖指標"
     }
 }

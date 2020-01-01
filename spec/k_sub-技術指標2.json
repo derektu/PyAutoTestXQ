@@ -1,0 +1,31 @@
+{
+    "setting.comments": [
+        "--定義K線技術指標的測試參數--",
+        "請設定以下參數:",
+        "build: 定義要跑的XQ版本, can be XQ, XQLite, XQ7",
+        "pagecode: 定義要開啟的基本頁面template. 目前的做法是先設定一個K線頁面, 以及對應的快捷碼, 然後用快捷碼開啟這個頁面之後更換指標來測試",
+        "symbols: 定義要測試的商品代碼(s), 可以定義多個商品, 開啟頁面後會依序更換到這些商品來測試",
+        "freqs: 定義要測試的頻率(s), 可以定義多種頻率:",
+                "如果是分鐘頻率的話, 請傳入'1', '10', etc.",
+                "如果是日線以上的頻率, 則請傳入以下字串: 'D', 'W', 'M', 'Q', 'H', 'Y', 'AD', 'AW', 'AM'",
+        "type: 定義指標的類型, 如果是副圖指標, 請傳入sub, 如果是主圖指標, 請傳入main, 預設是sub",        
+        "outputfolder: 定義輸出檔案的位置, 可以使用${DATETIME}來標記當時時間 (換成YYYYMMDD-HHMMSS)",
+        "waittime: 更換指標後的預設等待時間(second)",
+        "rootpath: 傳入指標的初始路徑, 例如'技術指標', 或是'XS指標\\系統\\XQ技術指標'(使用\\來分隔子目錄). 測試時會依序引用這個路徑底下的所有指標"
+    ],
+    
+    "setting": {
+        "build": "XQ",
+        "pagecode": "501",
+        "outputfolder" : "C:\\Temp\\PyTest\\output\\K線\\技術指標\\${DATETIME}",        
+        "waittime": 8,
+        "symbols": [
+            "2454.tw"
+        ],    
+        "freqs" : [
+            "D"
+        ],
+        "type": "sub",
+        "rootpath": "技術指標"
+    }
+}
